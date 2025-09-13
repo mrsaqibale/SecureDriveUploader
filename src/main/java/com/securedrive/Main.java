@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import com.securedrive.ui.MainWindow;
+import com.securedrive.ui.ScreenManager;
 import com.securedrive.util.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +15,12 @@ import java.util.Objects;
 
 /**
  * Main entry point for the SecureDriveUploader application.
- * This class initializes the JavaFX application and sets up the main window.
+ * This class initializes the JavaFX application and sets up the main window with scene management.
  */
 public class Main extends Application {
     
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     private static final String APP_TITLE = "Secure Drive Uploader";
-    private static final String FXML_PATH = "/ui/main.fxml";
     private static final String ICON_PATH = "/icons/app-icon.png";
     
     @Override
@@ -29,15 +28,22 @@ public class Main extends Application {
         try {
             logger.info("Starting SecureDriveUploader application");
             
-            // Load the main FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_PATH));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            // Initialize configuration manager
+            ConfigManager.getInstance().loadConfig();
+            
+            // Initialize screen manager
+            ScreenManager screenManager = new ScreenManager(primaryStage);
+            
+            // Load the welcome screen as the first screen
+            Scene scene = screenManager.loadWelcomeScreen();
             
             // Set up the main window
             primaryStage.setTitle(APP_TITLE);
             primaryStage.setScene(scene);
-            primaryStage.setMinWidth(600);
-            primaryStage.setMinHeight(400);
+            primaryStage.setMinWidth(800);
+            primaryStage.setMinHeight(600);
+            primaryStage.setWidth(1000);
+            primaryStage.setHeight(700);
             
             // Set application icon if available
             try {
@@ -47,12 +53,8 @@ public class Main extends Application {
                 logger.warn("Could not load application icon: {}", e.getMessage());
             }
             
-            // Initialize configuration manager
-            ConfigManager.getInstance().loadConfig();
-            
-            // Set up the main window controller
-            MainWindow controller = fxmlLoader.getController();
-            controller.setPrimaryStage(primaryStage);
+            // Center the window on screen
+            primaryStage.centerOnScreen();
             
             // Show the application
             primaryStage.show();
