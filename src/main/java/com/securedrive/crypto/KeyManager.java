@@ -71,6 +71,122 @@ public class KeyManager {
     }
     
     /**
+     * Generate a new encryption key for the specified algorithm.
+     * 
+     * @param algorithm The encryption algorithm (e.g., "AES-256-CBC")
+     * @return The generated key bytes
+     * @throws Exception If key generation fails
+     */
+    public byte[] generateKey(String algorithm) throws Exception {
+        try {
+            int keyLength = getKeyLengthFromAlgorithm(algorithm);
+            String baseAlgorithm = getBaseAlgorithmFromAlgorithm(algorithm);
+            
+            KeyGenerator keyGenerator = KeyGenerator.getInstance(baseAlgorithm);
+            keyGenerator.init(keyLength, SecureRandom.getInstanceStrong());
+            SecretKey secretKey = keyGenerator.generateKey();
+            byte[] key = secretKey.getEncoded();
+            
+            logger.info("Generated new {} encryption key", algorithm);
+            return key;
+            
+        } catch (NoSuchAlgorithmException e) {
+            logger.error("Unsupported algorithm: {}", algorithm);
+            throw new Exception("Unsupported encryption algorithm: " + algorithm, e);
+        }
+    }
+    
+    /**
+     * Load encryption key from a specific file.
+     * 
+     * @param keyFile The file containing the key
+     * @return The loaded key bytes
+     * @throws Exception If key loading fails
+     */
+    public byte[] loadKeyFromFile(java.io.File keyFile) throws Exception {
+        try {
+            if (!keyFile.exists()) {
+                throw new FileNotFoundException("Key file does not exist: " + keyFile.getAbsolutePath());
+            }
+            
+            if (!keyFile.isFile()) {
+                throw new IllegalArgumentException("Path is not a file: " + keyFile.getAbsolutePath());
+            }
+            
+            if (!keyFile.canRead()) {
+                throw new SecurityException("Cannot read key file: " + keyFile.getAbsolutePath());
+            }
+            
+            // Read key from file
+            String encodedKey = Files.readString(keyFile.toPath()).trim();
+            byte[] key = Base64.getDecoder().decode(encodedKey);
+            
+            logger.info("Successfully loaded encryption key from file: {}", keyFile.getName());
+            return key;
+            
+        } catch (Exception e) {
+            logger.error("Failed to load key from file {}: {}", keyFile.getName(), e.getMessage());
+            throw new Exception("Failed to load key from file: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * Save encryption key to a specific file.
+     * 
+     * @param key The key bytes to save
+     * @param keyFile The file to save the key to
+     * @throws Exception If key saving fails
+     */
+    public void saveKeyToFile(byte[] key, java.io.File keyFile) throws Exception {
+        try {
+            // Create parent directory if it doesn't exist
+            java.io.File parentDir = keyFile.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+            
+            // Encode key as Base64
+            String encodedKey = Base64.getEncoder().encodeToString(key);
+            
+            // Write key to file
+            Files.writeString(keyFile.toPath(), encodedKey);
+            
+            // Set secure file permissions
+            setSecureFilePermissions(keyFile.toPath());
+            
+            logger.info("Successfully saved encryption key to file: {}", keyFile.getName());
+            
+        } catch (Exception e) {
+            logger.error("Failed to save key to file {}: {}", keyFile.getName(), e.getMessage());
+            throw new Exception("Failed to save key to file: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * Get the key length from algorithm string.
+     * 
+     * @param algorithm The algorithm string (e.g., "AES-256-CBC")
+     * @return The key length in bits
+     */
+    private int getKeyLengthFromAlgorithm(String algorithm) {
+        if (algorithm.contains("128")) return 128;
+        if (algorithm.contains("192")) return 192;
+        if (algorithm.contains("256")) return 256;
+        return 256; // Default to 256 bits
+    }
+    
+    /**
+     * Get the base algorithm from algorithm string.
+     * 
+     * @param algorithm The algorithm string (e.g., "AES-256-CBC")
+     * @return The base algorithm (e.g., "AES")
+     */
+    private String getBaseAlgorithmFromAlgorithm(String algorithm) {
+        if (algorithm.startsWith("AES")) return "AES";
+        return "AES"; // Default to AES
+    }
+    
+    /**
      * Get the current encryption key.
      * 
      * @return The encryption key bytes

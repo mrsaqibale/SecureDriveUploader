@@ -37,6 +37,17 @@ public class DriveUploader {
     }
     
     /**
+     * Constructor for DriveUploader with existing DriveService.
+     * 
+     * @param driveService The DriveService instance to use
+     */
+    public DriveUploader(DriveService driveService) {
+        this.driveService = driveService;
+        this.uploadFolderId = null;
+        logger.info("DriveUploader initialized with existing DriveService");
+    }
+    
+    /**
      * Upload a file to Google Drive.
      * 
      * @param file The file to upload
