@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextAlignment?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="success-background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.SuccessController">
+   <children>
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="600.0" prefWidth="900.0" spacing="20.0" styleClass="success-container">
+         <children>
+            <!-- Success Header -->
+            <VBox alignment="CENTER" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="success-icon">
+                     <image>
+                        <Image url="@../icons/success.png" />
+                     </image>
+                  </ImageView>
+                  
+                  <Label styleClass="success-title" text="🎉 Upload Complete!">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+                  
+                  <Label styleClass="success-subtitle" text="Your files have been successfully encrypted and uploaded to Google Drive">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- Upload Summary -->
+            <VBox alignment="CENTER" spacing="15.0" styleClass="summary-section">
+               <children>
+                  <Label styleClass="summary-title" text="Upload Summary">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  
+                  <HBox alignment="CENTER" spacing="40.0" styleClass="summary-stats">
+                     <children>
+                        <VBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label styleClass="summary-stat-label" text="Files Uploaded">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="filesUploadedLabel" styleClass="summary-stat-value" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label styleClass="summary-stat-label" text="Total Size">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="totalSizeLabel" styleClass="summary-stat-value" text="0 MB">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        
+                        <VBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Label styleClass="summary-stat-label" text="Upload Time">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="uploadTimeLabel" styleClass="summary-stat-value" text="0:00">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Uploaded Files List -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="files-section">
+               <children>
+                  <Label styleClass="files-title" text="Uploaded Files">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <ScrollPane fitToWidth="true" maxHeight="200.0" prefHeight="200.0" prefWidth="800.0" styleClass="files-scroll-pane">
+                     <content>
+                        <ListView fx:id="uploadedFilesListView" prefHeight="198.0" prefWidth="780.0" styleClass="uploaded-files-list" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            
+            <!-- Drive Folder Link -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="drive-link-section">
+               <children>
+                  <Label styleClass="drive-link-title" text="Access Your Files">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <Button fx:id="openDriveButton" mnemonicParsing="false" onAction="#handleOpenDriveButton" styleClass="primary-button" text="📁 Open Drive Folder">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        
+                        <Hyperlink fx:id="driveFolderLink" onAction="#handleDriveFolderLink" styleClass="drive-folder-link" text="View in Google Drive">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Security Reminder -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="security-reminder-section">
+               <children>
+                  <Label styleClass="security-reminder-title" text="🔐 Security Reminder">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  
+                  <Label styleClass="security-reminder-text" text="• Keep your encryption key safe - you'll need it to decrypt your files&#10;• Your files are encrypted and only you can decrypt them&#10;• Consider backing up your encryption key in a secure location">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- Action Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="uploadMoreButton" mnemonicParsing="false" onAction="#handleUploadMoreButton" styleClass="secondary-button" text="📤 Upload More Files">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  
+                  <Button fx:id="exportKeyButton" mnemonicParsing="false" onAction="#handleExportKeyButton" styleClass="secondary-button" text="🔑 Export Key">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  
+                  <Button fx:id="finishButton" mnemonicParsing="false" onAction="#handleFinishButton" styleClass="primary-button" text="✅ Finish">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
