@@ -196,7 +196,7 @@ public class KeyManager {
             java.nio.file.attribute.PosixFileAttributes attrs = 
                 Files.readAttributes(keyFilePath, java.nio.file.attribute.PosixFileAttributes.class);
             
-            java.nio.file.attribute.PosixFilePermissions perms = attrs.permissions();
+            java.util.Set<java.nio.file.attribute.PosixFilePermission> perms = attrs.permissions();
             
             // File should be readable only by owner
             return perms.contains(java.nio.file.attribute.PosixFilePermission.OWNER_READ) &&
