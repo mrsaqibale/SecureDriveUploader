@@ -32,14 +32,14 @@
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>
-                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                     <textAlignment>CENTER</textAlignment>
                   </Label>
                   
                   <Label styleClass="success-subtitle" text="Your files have been successfully encrypted and uploaded to Google Drive">
                      <font>
                         <Font size="14.0" />
                      </font>
-                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                     <textAlignment>CENTER</textAlignment>
                   </Label>
                </children>
             </VBox>
@@ -163,7 +163,7 @@
                      <font>
                         <Font size="12.0" />
                      </font>
-                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                     <textAlignment>CENTER</textAlignment>
                   </Label>
                </children>
             </VBox>
