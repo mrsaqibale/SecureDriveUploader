@@ -26,7 +26,7 @@
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
-               <textAlignment>TextAlignment.CENTER</textAlignment>
+               <textAlignment>CENTER</textAlignment>
             </Label>
             
             <!-- Subtitle -->
@@ -34,7 +34,7 @@
                <font>
                   <Font size="16.0" />
                </font>
-               <textAlignment>TextAlignment.CENTER</textAlignment>
+               <textAlignment>CENTER</textAlignment>
             </Label>
             
             <!-- Features List -->

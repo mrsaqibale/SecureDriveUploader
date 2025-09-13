@@ -29,7 +29,7 @@
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
-               <textAlignment>TextAlignment.CENTER</textAlignment>
+               <textAlignment>CENTER</textAlignment>
             </Label>
             
             <!-- Description -->
@@ -37,7 +37,7 @@
                <font>
                   <Font size="14.0" />
                </font>
-               <textAlignment>TextAlignment.CENTER</textAlignment>
+               <textAlignment>CENTER</textAlignment>
             </Label>
             
             <!-- Sign In Button -->

@@ -34,14 +34,14 @@
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
-                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                     <textAlignment>CENTER</textAlignment>
                   </Label>
                   
                   <Label styleClass="upload-subtitle" text="Encrypting and uploading your files to Google Drive">
                      <font>
                         <Font size="14.0" />
                      </font>
-                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                     <textAlignment>CENTER</textAlignment>
                   </Label>
                </children>
             </VBox>
