@@ -67,9 +67,15 @@ public class ScreenManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Scene scene = new Scene(loader.load(), 1000, 700);
             
+            // Get the controller and inject the ScreenManager
+            Object controller = loader.getController();
+            if (controller != null) {
+                injectScreenManager(controller);
+            }
+            
             // Cache the scene and controller
             sceneCache.put(screenId, scene);
-            controllerCache.put(screenId, loader.getController());
+            controllerCache.put(screenId, controller);
             
             // Apply CSS styles if available
             String cssPath = "/ui/styles.css";
@@ -85,6 +91,23 @@ public class ScreenManager {
         } catch (IOException e) {
             logger.error("Failed to load FXML file for screen {}: {}", screenId, e.getMessage());
             throw e;
+        }
+    }
+    
+    /**
+     * Injects the ScreenManager into controllers that support it.
+     * 
+     * @param controller The controller to inject the ScreenManager into
+     */
+    private void injectScreenManager(Object controller) {
+        try {
+            // Try to call setScreenManager method if it exists
+            java.lang.reflect.Method setScreenManagerMethod = controller.getClass().getMethod("setScreenManager", ScreenManager.class);
+            setScreenManagerMethod.invoke(controller, this);
+            logger.debug("Injected ScreenManager into controller: {}", controller.getClass().getSimpleName());
+        } catch (Exception e) {
+            // Controller doesn't support ScreenManager injection, that's fine
+            logger.debug("Controller {} does not support ScreenManager injection", controller.getClass().getSimpleName());
         }
     }
     

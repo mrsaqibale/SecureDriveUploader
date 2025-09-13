@@ -40,9 +40,6 @@ public class WelcomeController implements Initializable {
         // Set up button hover effects
         setupButtonEffects();
         
-        // Initialize screen manager
-        this.screenManager = new ScreenManager(null); // Will be set by ScreenManager
-        
         logger.info("Welcome Screen initialized successfully");
     }
     
@@ -71,10 +68,12 @@ public class WelcomeController implements Initializable {
         logger.info("Next button clicked - transitioning to authentication screen");
         
         try {
-            // Get the screen manager from the application context
-            // For now, we'll create a new one - in a real app, this would be injected
-            ScreenManager manager = new ScreenManager(null);
-            manager.transitionToAuth();
+            if (screenManager != null) {
+                screenManager.transitionToAuth();
+            } else {
+                logger.error("ScreenManager is null - cannot transition to authentication screen");
+                showErrorDialog("Navigation Error", "Screen manager not available. Please restart the application.");
+            }
         } catch (Exception e) {
             logger.error("Failed to transition to authentication screen: {}", e.getMessage(), e);
             showErrorDialog("Navigation Error", "Failed to navigate to the next screen.");
