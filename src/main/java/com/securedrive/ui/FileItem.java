@@ -152,6 +152,81 @@ public class FileItem {
         }
     }
     
+    /**
+     * Gets the display text for the file item.
+     * 
+     * @return Formatted display text
+     */
+    public String getDisplayText() {
+        return getFileName() + " (" + getFileSize() + ")";
+    }
+    
+    /**
+     * Gets the icon for the file based on its type.
+     * 
+     * @return The icon node
+     */
+    public Node getIcon() {
+        ImageView iconView = new ImageView();
+        iconView.setFitHeight(20);
+        iconView.setFitWidth(20);
+        
+        // Set icon based on file extension
+        String fileName = getFileName().toLowerCase();
+        String iconPath = getIconPath(fileName);
+        
+        try {
+            Image icon = new Image(getClass().getResourceAsStream(iconPath));
+            iconView.setImage(icon);
+        } catch (Exception e) {
+            // Use default file icon if specific icon not found
+            try {
+                Image defaultIcon = new Image(getClass().getResourceAsStream("/icons/file.png"));
+                iconView.setImage(defaultIcon);
+            } catch (Exception ex) {
+                // If no icon is available, create a text-based icon
+                Label textIcon = new Label("📄");
+                textIcon.setFont(Font.font("System", FontWeight.BOLD, 16));
+                return textIcon;
+            }
+        }
+        
+        return iconView;
+    }
+    
+    /**
+     * Gets the icon path based on file extension.
+     * 
+     * @param fileName The file name
+     * @return The icon path
+     */
+    private String getIconPath(String fileName) {
+        if (fileName.endsWith(".pdf")) return "/icons/pdf.png";
+        if (fileName.endsWith(".docx") || fileName.endsWith(".doc")) return "/icons/word.png";
+        if (fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) return "/icons/excel.png";
+        if (fileName.endsWith(".pptx") || fileName.endsWith(".ppt")) return "/icons/powerpoint.png";
+        if (fileName.endsWith(".txt")) return "/icons/text.png";
+        if (fileName.endsWith(".zip") || fileName.endsWith(".rar") || fileName.endsWith(".7z")) return "/icons/archive.png";
+        if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png") || 
+            fileName.endsWith(".gif") || fileName.endsWith(".bmp")) return "/icons/image.png";
+        if (fileName.endsWith(".mp4") || fileName.endsWith(".avi") || fileName.endsWith(".mov")) return "/icons/video.png";
+        if (fileName.endsWith(".mp3") || fileName.endsWith(".wav") || fileName.endsWith(".flac")) return "/icons/audio.png";
+        return "/icons/file.png";
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        FileItem fileItem = (FileItem) obj;
+        return file.equals(fileItem.file);
+    }
+    
+    @Override
+    public int hashCode() {
+        return file.hashCode();
+    }
+    
     @Override
     public String toString() {
         return "FileItem{" +
