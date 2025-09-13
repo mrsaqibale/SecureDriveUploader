@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextAlignment?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="encryption-background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.EncryptionController">
+   <children>
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="600.0" prefWidth="900.0" spacing="20.0" styleClass="encryption-container">
+         <children>
+            <!-- Header -->
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" styleClass="encryption-icon">
+                     <image>
+                        <Image url="@../icons/lock.png" />
+                     </image>
+                  </ImageView>
+                  
+                  <Label styleClass="encryption-title" text="Encryption Setup">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+                  
+                  <Label styleClass="encryption-subtitle" text="Configure encryption settings and manage your encryption key">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- Encryption Algorithm Selection -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="algorithm-section">
+               <children>
+                  <Label styleClass="section-title" text="Encryption Algorithm">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <ComboBox fx:id="algorithmComboBox" maxWidth="300.0" minWidth="300.0" styleClass="algorithm-combo" />
+               </children>
+            </VBox>
+            
+            <!-- Key Management Section -->
+            <VBox alignment="CENTER" spacing="15.0" styleClass="key-section">
+               <children>
+                  <Label styleClass="section-title" text="Encryption Key Management">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <Button fx:id="generateKeyButton" mnemonicParsing="false" onAction="#handleGenerateKeyButton" styleClass="primary-button" text="🔑 Generate New Key">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        
+                        <Button fx:id="importKeyButton" mnemonicParsing="false" onAction="#handleImportKeyButton" styleClass="secondary-button" text="📁 Import Key">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        
+                        <Button fx:id="exportKeyButton" disable="true" mnemonicParsing="false" onAction="#handleExportKeyButton" styleClass="secondary-button" text="💾 Export Key">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  
+                  <!-- Key Display -->
+                  <VBox alignment="CENTER" spacing="10.0" styleClass="key-display-section">
+                     <children>
+                        <Label styleClass="key-label" text="Current Key:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        
+                        <TextField fx:id="keyDisplayField" editable="false" maxWidth="600.0" minWidth="600.0" styleClass="key-display-field" />
+                        
+                        <CheckBox fx:id="showKeyCheckBox" mnemonicParsing="false" onAction="#handleShowKeyCheckBox" text="Show key" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            
+            <!-- Key File Options -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="key-file-section">
+               <children>
+                  <CheckBox fx:id="saveKeyToFileCheckBox" mnemonicParsing="false" selected="true" text="Save key to file after encryption">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  
+                  <CheckBox fx:id="rememberKeyCheckBox" mnemonicParsing="false" selected="false" text="Remember key for future sessions">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </VBox>
+            
+            <!-- Security Information -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="security-info-section">
+               <children>
+                  <Label styleClass="security-warning" text="⚠️ Important Security Information">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  
+                  <TextArea editable="false" maxHeight="80.0" maxWidth="700.0" prefHeight="80.0" prefWidth="700.0" styleClass="security-info-text" text="• Keep your encryption key safe - without it, your files cannot be decrypted&#10;• The key is never stored on Google Drive - only you have access to it&#10;• Consider backing up your key in a secure location&#10;• If you lose your key, your encrypted files will be permanently inaccessible" wrapText="true" />
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- Navigation Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" styleClass="secondary-button" text="← Back">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextButton" disable="true" mnemonicParsing="false" onAction="#handleNextButton" styleClass="primary-button" text="Continue →">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
