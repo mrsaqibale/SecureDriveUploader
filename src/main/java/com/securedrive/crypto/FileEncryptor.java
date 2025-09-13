@@ -200,7 +200,12 @@ public class FileEncryptor {
      */
     private byte[] generateRandomIV() {
         byte[] iv = new byte[IV_LENGTH];
-        SecureRandom.getInstanceStrong().nextBytes(iv);
+        try {
+            SecureRandom.getInstanceStrong().nextBytes(iv);
+        } catch (java.security.NoSuchAlgorithmException e) {
+            // Fallback to default SecureRandom
+            new SecureRandom().nextBytes(iv);
+        }
         return iv;
     }
     
