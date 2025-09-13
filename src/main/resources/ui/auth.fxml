@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextAlignment?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="auth-background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.AuthController">
+   <children>
+      <VBox alignment="CENTER" layoutX="150.0" layoutY="80.0" prefHeight="540.0" prefWidth="700.0" spacing="30.0" styleClass="auth-container">
+         <children>
+            <!-- Google Drive Icon -->
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="google-drive-icon">
+               <image>
+                  <Image url="@../icons/google-drive.png" />
+               </image>
+            </ImageView>
+            
+            <!-- Title -->
+            <Label styleClass="auth-title" text="Connect to Google Drive">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+               <textAlignment>TextAlignment.CENTER</textAlignment>
+            </Label>
+            
+            <!-- Description -->
+            <Label styleClass="auth-description" text="Sign in with your Google account to securely upload files to Google Drive">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <textAlignment>TextAlignment.CENTER</textAlignment>
+            </Label>
+            
+            <!-- Sign In Button -->
+            <Button fx:id="signInButton" maxWidth="300.0" minWidth="300.0" mnemonicParsing="false" onAction="#handleSignInButton" styleClass="google-signin-button" text="Sign in with Google">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            
+            <!-- Progress Indicator -->
+            <ProgressIndicator fx:id="progressIndicator" prefHeight="40.0" prefWidth="40.0" visible="false" />
+            
+            <!-- Status Label -->
+            <Label fx:id="statusLabel" styleClass="status-label" text="" textAlignment="TextAlignment.CENTER">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            
+            <!-- Log Area -->
+            <VBox alignment="CENTER" prefHeight="150.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label styleClass="log-title" text="Authentication Log">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="logArea" editable="false" prefHeight="100.0" prefWidth="600.0" styleClass="log-area" wrapText="true" />
+               </children>
+            </VBox>
+            
+            <!-- Navigation Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" styleClass="secondary-button" text="← Back">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextButton" disable="true" mnemonicParsing="false" onAction="#handleNextButton" styleClass="primary-button" text="Continue →">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
