@@ -92,6 +92,68 @@ public class DriveService {
     }
     
     /**
+     * Authenticate with Google Drive (convenience method for GUI).
+     * This method initializes the service and performs authentication.
+     * 
+     * @return True if authentication successful, false otherwise
+     */
+    public boolean authenticate() {
+        try {
+            initialize();
+            return testConnection();
+        } catch (Exception e) {
+            logger.error("Authentication failed: {}", e.getMessage(), e);
+            return false;
+        }
+    }
+    
+    /**
+     * Get the authenticated user's email address.
+     * 
+     * @return User email address, or null if not available
+     */
+    public String getUserEmail() {
+        try {
+            if (!isInitialized) {
+                return null;
+            }
+            
+            Drive.About.Get aboutRequest = driveService.about().get()
+                .setFields("user(emailAddress)");
+            
+            com.google.api.services.drive.model.About about = aboutRequest.execute();
+            com.google.api.services.drive.model.User user = about.getUser();
+            
+            return user.getEmailAddress();
+            
+        } catch (Exception e) {
+            logger.error("Failed to get user email: {}", e.getMessage());
+            return null;
+        }
+    }
+    
+    /**
+     * Sign out from Google Drive (clear authentication).
+     */
+    public void signOut() {
+        logger.info("Signing out from Google Drive");
+        
+        this.driveService = null;
+        this.isInitialized = false;
+        
+        // Clear stored tokens
+        try {
+            Path tokensPath = Paths.get(System.getProperty("user.home"), TOKENS_DIRECTORY_PATH);
+            if (tokensPath.toFile().exists()) {
+                deleteDirectory(tokensPath.toFile());
+                logger.info("Cleared stored authentication tokens");
+            }
+        } catch (Exception e) {
+            logger.warn("Failed to clear stored tokens: {}", e.getMessage());
+        }
+    }
+    
+    /**
      * Get the Google Drive service instance.
      * 
      * @return The Drive service instance
