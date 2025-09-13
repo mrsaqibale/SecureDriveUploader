@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextAlignment?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="file-select-background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.FileSelectController">
+   <children>
+      <VBox alignment="CENTER" layoutX="50.0" layoutY="50.0" prefHeight="600.0" prefWidth="900.0" spacing="20.0" styleClass="file-select-container">
+         <children>
+            <!-- Header -->
+            <VBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" styleClass="file-icon">
+                     <image>
+                        <Image url="@../icons/folder.png" />
+                     </image>
+                  </ImageView>
+                  
+                  <Label styleClass="file-select-title" text="Select Files to Upload">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+                  
+                  <Label styleClass="file-select-subtitle" text="Choose the files you want to encrypt and upload to Google Drive">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <textAlignment>TextAlignment.CENTER</textAlignment>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- File Selection Controls -->
+            <HBox alignment="CENTER" spacing="15.0" styleClass="file-controls">
+               <children>
+                  <Button fx:id="selectFilesButton" mnemonicParsing="false" onAction="#handleSelectFilesButton" styleClass="primary-button" text="📁 Select Files">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  
+                  <Button fx:id="selectFolderButton" mnemonicParsing="false" onAction="#handleSelectFolderButton" styleClass="secondary-button" text="📂 Select Folder">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  
+                  <Button fx:id="clearAllButton" disable="true" mnemonicParsing="false" onAction="#handleClearAllButton" styleClass="danger-button" text="🗑️ Clear All">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            
+            <!-- Selected Files List -->
+            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="800.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="files-list-title" text="Selected Files:">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fileCountLabel" styleClass="file-count-label" text="(0 files)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  
+                  <ScrollPane fitToWidth="true" maxHeight="250.0" prefHeight="250.0" prefWidth="800.0" styleClass="files-scroll-pane">
+                     <content>
+                        <ListView fx:id="filesListView" prefHeight="248.0" prefWidth="780.0" styleClass="files-list-view" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+            
+            <!-- File Information -->
+            <VBox alignment="CENTER" spacing="5.0" styleClass="file-info-container">
+               <children>
+                  <Label fx:id="totalSizeLabel" styleClass="file-info-label" text="Total size: 0 bytes">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="file-info-label" text="Supported formats: .txt, .pdf, .docx, .xlsx, .pptx, .zip, .jpg, .png, .mp4, .mp3">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="800.0" />
+            
+            <!-- Navigation Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" styleClass="secondary-button" text="← Back">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextButton" disable="true" mnemonicParsing="false" onAction="#handleNextButton" styleClass="primary-button" text="Continue →">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
