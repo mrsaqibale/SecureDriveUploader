@@ -1,6 +1,7 @@
 package com.securedrive.ui;
 
 import com.securedrive.crypto.FileEncryptor;
+import com.securedrive.crypto.KeyManager;
 import com.securedrive.drive.DriveUploader;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
