@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.MainWindow">
+   <top>
+      <VBox spacing="10.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Secure Drive Uploader" textFill="#2c3e50">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="statusLabel" text="Ready" textFill="#7f8c8d" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </HBox>
+            <Separator />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox spacing="15.0">
+         <children>
+            <!-- File Selection Section -->
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="File Selection" textFill="#34495e">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Button fx:id="selectFilesButton" mnemonicParsing="false" onAction="#selectFiles" text="Select Files" />
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearFiles" text="Clear All" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <CheckBox fx:id="encryptCheckBox" mnemonicParsing="false" selected="true" text="Encrypt Files" />
+                        <CheckBox fx:id="uploadCheckBox" mnemonicParsing="false" selected="true" text="Upload to Drive" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </VBox>
+            
+            <!-- Files Table -->
+            <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Selected Files" textFill="#34495e">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="filesTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="fileNameColumn" prefWidth="300.0" text="File Name" />
+                        <TableColumn fx:id="fileSizeColumn" prefWidth="100.0" text="Size" />
+                        <TableColumn fx:id="statusColumn" prefWidth="150.0" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </VBox>
+            
+            <!-- Progress Section -->
+            <VBox spacing="5.0">
+               <children>
+                  <ProgressBar fx:id="progressBar" visible="false" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox spacing="10.0">
+         <children>
+            <Separator />
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="encryptButton" mnemonicParsing="false" onAction="#encryptFiles" text="Encrypt Files" />
+                  <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#uploadFiles" text="Upload Files" />
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
