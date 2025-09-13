@@ -222,7 +222,8 @@ public class UploadController implements Initializable {
             @Override
             protected Void call() throws Exception {
                 try {
-                    FileEncryptor encryptor = new FileEncryptor();
+                    KeyManager keyManager = new KeyManager();
+                    FileEncryptor encryptor = new FileEncryptor(keyManager);
                     DriveUploader uploader = new DriveUploader();
                     
                     int totalFiles = filesToUpload.size();
@@ -253,7 +254,8 @@ public class UploadController implements Initializable {
                                 currentFileStatusLabel.setText("Encrypting...");
                             });
                             
-                            File encryptedFile = encryptor.encryptFile(fileItem.getFile(), getEncryptionKey(), getEncryptionAlgorithm());
+                            Path encryptedPath = encryptor.encryptFile(fileItem.getFile().toPath());
+                            File encryptedFile = encryptedPath.toFile();
                             fileItem.setEncryptedFile(encryptedFile);
                             
                             // Step 2: Upload to Drive
