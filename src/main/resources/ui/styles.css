@@ -1,0 +1,558 @@
+/* SecureDriveUploader - Modern 3D CSS Styles */
+
+/* Root and Global Styles */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Background Styles for Different Screens */
+.welcome-background {
+    -fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
+}
+
+.auth-background {
+    -fx-background-color: linear-gradient(to bottom right, #f093fb 0%, #f5576c 100%);
+}
+
+.file-select-background {
+    -fx-background-color: linear-gradient(to bottom right, #4facfe 0%, #00f2fe 100%);
+}
+
+.encryption-background {
+    -fx-background-color: linear-gradient(to bottom right, #43e97b 0%, #38f9d7 100%);
+}
+
+.upload-background {
+    -fx-background-color: linear-gradient(to bottom right, #fa709a 0%, #fee140 100%);
+}
+
+.success-background {
+    -fx-background-color: linear-gradient(to bottom right, #a8edea 0%, #fed6e3 100%);
+}
+
+/* Container Styles */
+.welcome-container,
+.auth-container,
+.file-select-container,
+.encryption-container,
+.upload-container,
+.success-container {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 5);
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+}
+
+/* Button Styles */
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #1B5E20;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 10 20 10 20;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #66BB6A, #4CAF50);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 6, 0, 0, 3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.primary-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2E7D32, #1B5E20);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 2, 0, 0, 1);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.secondary-button {
+    -fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #0D47A1;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 3, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.secondary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #42A5F5, #2196F3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 5, 0, 0, 3);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.danger-button {
+    -fx-background-color: linear-gradient(to bottom, #F44336, #D32F2F);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #B71C1C;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 8 16 8 16;
+}
+
+.danger-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #EF5350, #F44336);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 6, 0, 0, 3);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.google-signin-button {
+    -fx-background-color: linear-gradient(to bottom, #4285F4, #1A73E8);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #1557B0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 12 24 12 24;
+}
+
+.google-signin-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5A95F5, #4285F4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 6, 0, 0, 3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Label Styles */
+.welcome-title {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
+}
+
+.welcome-subtitle {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-style: italic;
+}
+
+.auth-title,
+.file-select-title,
+.encryption-title,
+.upload-title,
+.success-title {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0, 0, 1);
+}
+
+.auth-description,
+.file-select-subtitle,
+.encryption-subtitle,
+.upload-subtitle,
+.success-subtitle {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-style: italic;
+}
+
+.section-title {
+    -fx-text-fill: #34495E;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+/* Feature Items */
+.feature-item {
+    -fx-text-fill: #2C3E50;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+/* Status Labels */
+.status-label {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-style: italic;
+}
+
+.progress-label {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+/* Progress Bars */
+.overall-progress-bar {
+    -fx-background-color: #E0E0E0;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #BDBDBD;
+    -fx-border-width: 1;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1);
+}
+
+.overall-progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #4CAF50, #8BC34A);
+    -fx-background-radius: 9;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.5), 2, 0, 0, 1);
+}
+
+.current-file-progress-bar {
+    -fx-background-color: #E0E0E0;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #BDBDBD;
+    -fx-border-width: 1;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+.current-file-progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #2196F3, #03A9F4);
+    -fx-background-radius: 7;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.5), 1, 0, 0, 1);
+}
+
+/* List Views */
+.files-list-view,
+.files-progress-list,
+.uploaded-files-list {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+
+.files-list-view .list-cell,
+.files-progress-list .list-cell,
+.uploaded-files-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8 12 8 12;
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.files-list-view .list-cell:selected,
+.files-progress-list .list-cell:selected,
+.uploaded-files-list .list-cell:selected {
+    -fx-background-color: linear-gradient(to right, #E3F2FD, #BBDEFB);
+    -fx-text-fill: #1976D2;
+}
+
+.files-list-view .list-cell:hover,
+.files-progress-list .list-cell:hover,
+.uploaded-files-list .list-cell:hover {
+    -fx-background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* Scroll Panes */
+.files-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.files-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+}
+
+.files-scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 1, 0, 0, 1);
+}
+
+/* Text Areas */
+.log-area {
+    -fx-background-color: rgba(0, 0, 0, 0.05);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Consolas", "Monaco", monospace;
+    -fx-font-size: 12px;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+/* Text Fields */
+.key-display-field {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-text-fill: #2C3E50;
+    -fx-font-family: "Consolas", "Monaco", monospace;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+/* Combo Boxes */
+.algorithm-combo {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+
+.algorithm-combo:hover {
+    -fx-border-color: #2196F3;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.3), 3, 0, 0, 2);
+}
+
+/* Check Boxes */
+.check-box {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+.check-box .box {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+.check-box:selected .box {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);
+    -fx-border-color: #1B5E20;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+/* Hyperlinks */
+.drive-folder-link {
+    -fx-text-fill: #2196F3;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.drive-folder-link:hover {
+    -fx-text-fill: #1976D2;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.5), 1, 0, 0, 1);
+}
+
+/* Statistics Labels */
+.stat-label {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-size: 12px;
+}
+
+.stat-value {
+    -fx-text-fill: #2C3E50;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+.summary-stat-label {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-size: 12px;
+}
+
+.summary-stat-value {
+    -fx-text-fill: #2C3E50;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+/* Security and Warning Styles */
+.security-warning {
+    -fx-text-fill: #E65100;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(230, 81, 0, 0.3), 1, 0, 0, 1);
+}
+
+.security-info-text {
+    -fx-background-color: rgba(255, 243, 224, 0.8);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #FFB74D;
+    -fx-border-width: 1;
+    -fx-text-fill: #E65100;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+.security-reminder-title {
+    -fx-text-fill: #E65100;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(230, 81, 0, 0.3), 1, 0, 0, 1);
+}
+
+.security-reminder-text {
+    -fx-background-color: rgba(255, 243, 224, 0.8);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #FFB74D;
+    -fx-border-width: 1;
+    -fx-text-fill: #E65100;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 1, 0, 0, 1);
+}
+
+/* Icon Styles */
+.app-logo,
+.google-drive-icon,
+.file-icon,
+.encryption-icon,
+.upload-icon,
+.success-icon {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+/* Section Containers */
+.features-container,
+.algorithm-section,
+.key-section,
+.key-display-section,
+.key-file-section,
+.security-info-section,
+.overall-progress-section,
+.file-progress-section,
+.current-file-section,
+.stats-section,
+.log-section,
+.summary-section,
+.files-section,
+.drive-link-section,
+.security-reminder-section {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+    -fx-padding: 15;
+}
+
+/* File Controls */
+.file-controls {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+    -fx-padding: 15;
+}
+
+/* File Info */
+.file-info-container {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-padding: 10;
+}
+
+.file-info-label {
+    -fx-text-fill: #7F8C8D;
+    -fx-font-size: 12px;
+}
+
+.file-count-label {
+    -fx-text-fill: #2196F3;
+    -fx-font-weight: bold;
+}
+
+.files-list-title {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+/* Progress Titles */
+.progress-title,
+.files-progress-title,
+.current-file-title,
+.log-title,
+.summary-title,
+.files-title,
+.drive-link-title {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+/* Current File Labels */
+.current-file-progress-label,
+.current-file-status-label {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+/* Summary Stats */
+.summary-stats {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+    -fx-padding: 15;
+}
+
+/* Key Label */
+.key-label {
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+}
+
+/* Animations and Transitions */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { translate-x: -50; }
+    to { translate-x: 0; }
+}
+
+/* Apply animations to containers */
+.welcome-container,
+.auth-container,
+.file-select-container,
+.encryption-container,
+.upload-container,
+.success-container {
+    -fx-opacity: 0;
+    -fx-translate-x: -50;
+}
+
+/* Success specific styles */
+.success-title {
+    -fx-text-fill: #2E7D32;
+    -fx-effect: dropshadow(gaussian, rgba(46, 125, 50, 0.3), 2, 0, 0, 1);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 800px) {
+    .welcome-container,
+    .auth-container,
+    .file-select-container,
+    .encryption-container,
+    .upload-container,
+    .success-container {
+        -fx-pref-width: 90%;
+        -fx-pref-height: 90%;
+    }
+}
