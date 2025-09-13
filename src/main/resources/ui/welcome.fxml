@@ -13,6 +13,14 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="welcome-background" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.securedrive.ui.WelcomeController">
    <children>
       <VBox alignment="CENTER" layoutX="200.0" layoutY="100.0" prefHeight="500.0" prefWidth="600.0" spacing="30.0" styleClass="welcome-container">
+         <style>
+            -fx-background-color: rgba(255, 255, 255, 0.95);
+            -fx-background-radius: 20;
+            -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 5);
+            -fx-border-radius: 20;
+            -fx-border-color: rgba(255, 255, 255, 0.3);
+            -fx-border-width: 1;
+         </style>
          <children>
             <!-- App Logo/Icon -->
             <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" styleClass="app-logo">
@@ -68,6 +76,18 @@
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
+               <style>
+                  -fx-background-color: #4CAF50;
+                  -fx-text-fill: white;
+                  -fx-font-weight: bold;
+                  -fx-background-radius: 8;
+                  -fx-border-radius: 8;
+                  -fx-border-color: #1B5E20;
+                  -fx-border-width: 1;
+                  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0, 0, 2);
+                  -fx-cursor: hand;
+                  -fx-padding: 10 20 10 20;
+               </style>
             </Button>
          </children>
          <padding>
