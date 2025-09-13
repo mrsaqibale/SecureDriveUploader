@@ -1,0 +1,23 @@
+# Icon Placeholder
+
+This directory contains placeholder files for the application icons.
+In a real implementation, you would replace these with actual icon files:
+
+- secure-cloud.png (Welcome screen logo)
+- google-drive.png (Google Drive icon)
+- folder.png (File selection icon)
+- lock.png (Encryption icon)
+- upload.png (Upload icon)
+- success.png (Success icon)
+- file.png (Default file icon)
+- pdf.png (PDF file icon)
+- word.png (Word document icon)
+- excel.png (Excel document icon)
+- powerpoint.png (PowerPoint icon)
+- text.png (Text file icon)
+- archive.png (Archive file icon)
+- image.png (Image file icon)
+- video.png (Video file icon)
+- audio.png (Audio file icon)
+
+For now, the application will use text-based fallbacks or default JavaFX icons.
