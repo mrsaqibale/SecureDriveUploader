@@ -222,4 +222,3 @@ For support, please open an issue on GitHub or contact the maintainers.
 - Google Drive integration
 - JavaFX GUI
 - Configuration management
-- Multi-file support
