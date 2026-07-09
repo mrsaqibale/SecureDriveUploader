@@ -50,7 +50,7 @@ mvn javafx:run
 
 Or build and run the JAR:
 ```bash
-mvn clean package
+mvn clean 
 java -jar target/SecureDriveUploader-1.0.0.jar
 ```
 
