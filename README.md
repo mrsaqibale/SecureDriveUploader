@@ -165,7 +165,6 @@ drive.folder.name=SecureDriveUploader
 # UI settings
 window.width=800
 window.height=600
-show.notifications=true
 ```
 
 ## Troubleshooting
